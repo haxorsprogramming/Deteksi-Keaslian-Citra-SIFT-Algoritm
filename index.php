@@ -22,7 +22,7 @@
                 <div class="content-wrapper d-flex align-items-center auth px-0">
                     <div class="row w-100 mx-0">
                         <div class="col-lg-4 mx-auto">
-                            <div class="auth-form-light text-left py-5 px-4 px-sm-5" id='login-app'>
+                            <div class="auth-form-light text-left py-5 px-4 px-sm-5" id="login-app">
                                 <div class="brand-logo" style='text-align:center;'>
                                     <img src="ladun/images/logo_uin.jpg" alt="logo" style='width:150px; '>
                                     <h3 style="font-weight:bold;margin-top:40px;">SIFT - Deteksi Keaslian Citra</h3>

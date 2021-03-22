@@ -1,9 +1,8 @@
-// route 
-var rToLogin = server + 'login/proses';
-var rToDashboard = server + 'dashboard/';
+// Route 
+var rToLogin = server + "proses_login.php";
 
-// vue object 
-var loginApp = new Vue({
+// Vue object 
+var vueLogin = new Vue({
   el : '#login-app',
   data : {
 
@@ -14,29 +13,24 @@ var loginApp = new Vue({
       let username = document.querySelector('#txtUsername').value;
       let password = document.querySelector('#txtPassword').value;
       let ds = {'username':username, 'password':password}
-      $.post(rToLogin, ds, function(data){
-        let ds = data;
-        if(ds.status === 'wrong_password'){
-          pesanUmumApp('warning', 'Invalid login', 'Password salah !!!');
-        }else if(ds.status === 'no_user'){
-          pesanUmumApp('warning', 'Invalid login', 'Username tidak terdaftar !!!');
-        }else{
-          window.location.assign(rToDashboard);
-        }
-      });
+      if(username === '' || password === ''){
+        pesanUmumApp('warning', 'Isi field!!!', 'Harap isi semua field!!!');
+      }else{
+        $.post(rToLogin, ds, function(data){
+          let obj = JSON.parse(data);
+          let status_login = obj.status;
+          if(status_login === 'sukses'){
+            window.location.assign('main_app/dashboard.php');
+          }else{
+            pesanUmumApp('warning', 'Gagal login', 'Periksa username & password!!!');
+          }
+        });
+      }
     }
   }
 });
 
-// function 
-const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
-
-$.ajaxSetup({
-  headers: {
-      'X-CSRF-TOKEN': csrftoken
-  }
-});
-
+// Inisialisasi 
 document.querySelector('#txtUsername').focus();
 
 function pesanUmumApp(icon, title, text)
