@@ -14,7 +14,8 @@ var divMenu = new Vue({
         pengujianAtc : function()
         {
             divMain.titleApps = "Pengujian Citra";
-            renderMenu("main_app/pengujian.php");
+            renderMenu("main_app/pengujian_awal.php");
+            // renderMenu("main_app/pengujian.php");
         }
     }
 });
