@@ -31,6 +31,18 @@
         </div>
     </div>
 
+    <div class="row" style="margin-top: 15px;">
+
+    <h4>Hasil analisa gambar</h4>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>No</th><th>Keypoint</th><th>Aksi</th>
+            </tr>
+        </thead>
+    </table>
+    </div>
+
 </div>
 
 <script>
