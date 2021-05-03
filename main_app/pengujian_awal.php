@@ -1,24 +1,13 @@
 <div id="divPengujianAwal">
 
     <div class="row" style="margin-top: 15px;">
-        <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
             <div class="card-body">
                 <div class="summary">
                     <div class="summary-info">
-                        <img src="../ladun/dasbor/img/set_img.png" id="imgPertama" style="width: 300px;"><br/><br/>
+                        <img src="../ladun/dasbor/img/set_img.png" id="imgPertama" style="width: 500px;"><br/><br/>
                         <small>Pilih gambar 1</small>
                     <input type="file" onchange="getImg_1()" class="form-control" id="txtGetImg1">
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-6 col-md-6 col-sm-6 col-12">
-        <div class="card-body">
-                <div class="summary">
-                    <div class="summary-info">
-                        <img src="../ladun/dasbor/img/set_img.png" id="imgKedua" style="width: 300px;"><br/><br/>
-                        <small>Pilih gambar 2</small>
-                        <input type="file" onchange="getImg_2()" class="form-control" id="txtGetImg2">
                     </div>
                 </div>
             </div>
@@ -31,7 +20,7 @@
         </div>
     </div>
 
-    <div class="row" style="margin-top: 15px;">
+    <div class="row" style="margin-top: 15px;" id="divHasil">
 
     <h4>Hasil analisa gambar</h4>
     <table class="table table-hover">
@@ -59,10 +48,10 @@ var appPengujian = new Vue({
         {
             console.log("mulai analisa gambar");
             let img1 = document.querySelector('#imgPertama').getAttribute("src");
-            let img2 = document.querySelector('#imgKedua').getAttribute("src");
-            let ds = { 'img1' : img1, 'img2' : img2 }
+            let ds = { 'img1' : img1}
             $.post(rToStartAnalisa, ds, function(data){
                 // let obj = JSON.parse(data);
+                document.querySelector("#divHasil").innerHTML = data;
                 console.log(data);
             });
         }
@@ -82,17 +71,5 @@ function getImg_1()
     }
 }
 
-function getImg_2()
-{
-    var fileGambar2 = new FileReader();
-    var inImg2 = document.querySelector('#txtGetImg2');
-    var sampulImg2 = document.querySelector('#imgKedua');
-    fileGambar2.readAsDataURL(inImg2.files[0]);
-
-    fileGambar2.onload = function(e){
-        let hasil = e.target.result;
-        sampulImg2.src = hasil;
-    }
-}
 
 </script>
